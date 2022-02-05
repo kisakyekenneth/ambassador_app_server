@@ -1,0 +1,15 @@
+#This will combine the Dockerfile with the Database
+# build . :-means that this will handle (build) the current Dockerfile
+# ports 8000:3000 :-Means that 8000 will be the port inside Docker container and 3000 is for NestJs app
+# Volumes .:/app ==That every time there is a change in current app, it will reflect it in the app directory of the container
+# Volumes is like nodemon, updates incase of change in /app of Docker into our NestJs app
+version: '3'
+services:
+  backend:
+    build: .
+    ports:
+      - "8000:3000" #declaring ports to use in the docker container and your application
+    volumes:
+      - ".:/app"
+
+# docker-compose up :- is the command to run
