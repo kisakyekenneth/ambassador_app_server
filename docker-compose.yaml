@@ -28,8 +28,8 @@ services:
       - ".dbdata:/var/lib/postgresql/data/" #Remember to use the ".dbdata":- persist data even if container shuts down" #This volume is help store data in postgres inside the docker container
     
     #This section below is commented since i have no postgres installed on my linux
-    #ports:
-     # -"50432:5432" 
+    ports:
+      - "50432:5432" 
 
 
 # docker-compose up :- is the command to run
