@@ -1,5 +1,6 @@
 # Where is this Project comming from
-FROM node:15.4
+# Node version for the project
+FROM node:12 
 
 # Set up the working directory of choice and COPY package.json to current workdir
 WORKDIR /app

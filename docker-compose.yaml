@@ -11,5 +11,25 @@ services:
       - "8000:3000" #declaring ports to use in the docker container and your application
     volumes:
       - ".:/app"
+    depends_on:
+      - db #This tells the program that this program contains on this service like function call
+
+#This container(db service) contain the Database for postgres. 
+#This code is run first before the above code since it's depended on
+  db:
+    image: "postgres" #Adding a databases service from docker to use docker postgres image
+    restart: always #Always restart DB incase of changes made
+    environment:
+       "POSTGRES_DB": "ambassador" #creating an environment variable like .env to run your DB
+       "POSTGRES_USER": "root"
+       "POSTGRES_PASSWORD": "root"
+       "POSTGRES_ROOT_PASSWORD": "root"
+    volumes:
+      - ".dbdata:/var/lib/postgresql/data/" #Remember to use the ".dbdata":- persist data even if container shuts down" #This volume is help store data in postgres inside the docker container
+    
+    #This section below is commented since i have no postgres installed on my linux
+    #ports:
+     # -"50432:5432" 
+
 
 # docker-compose up :- is the command to run
